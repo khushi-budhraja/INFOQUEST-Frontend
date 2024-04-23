@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfoQuest- QuizQuest</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <style>
+        /* Styling for questions */
+        .question {
+            font-size: 22px;
+            color: rgb(30, 30, 30); /* Change color of questions */
+        }
+
+        /* Styling for options */
+        .options {
+            font-size: 20px;
+            color: rgb(11, 89, 224); /* Change color of options */
+            margin-left: 20px; /* Add left margin to options for spacing */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">InfoQuest- QuizQuest</div>
+    </div>
+    <h3 id="tagline">"Quiz Time: Challenge Your Mind, Expand Your Knowledge!"</h3>
+    <br><br>
+
+    <form action="quizsearch" method="post">
+        <div class="quiz-container">
+            <label for="topicInput" style="margin-right: 5px;">Enter the topic for the quiz:</label>
+            <input type="text" id="topicInput" name="topic" placeholder="Enter Topic" style="  margin-right: 2px; width: 850px; height: 35px;  display: inline-block; box-sizing: border-box;">
+            <button id="searchBtn" style="height:30px ;background-color: rgb(122, 249, 221); border-radius: 5px; margin-left: 0px; display: inline-block; box-sizing: border-box;">Generate Quiz</button>
+        </div>
+        <div id="quiz-questions">
+            {% if Askmessage %}
+                {% for parts in Askmessage %}
+                    <div class="question">{{ parts[0] }}</div>
+                        {% for option in parts[1:] %}
+                            <div class="options">     {{ option }}</div>
+                        {% endfor %}
+                    <br>
+                {% endfor %}
+            {% endif %}
+            <br><br><br>
+        </div>
+        <div id="quiz-solution">
+            {% if Solution %}
+            <h3 style="color: rgb(179, 0, 0); margin-left: 10px;">Answers:</h3>
+                {{ Solution }}
+            {% endif %}
+        </div>
+        <br><br><br>
+</body>
+</html>

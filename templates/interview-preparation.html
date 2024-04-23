@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfoQuest- Interview Prep</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <style>
+        /* Styling for questions */
+        .question {
+            font-size: 25px;
+            color: rgb(30, 30, 30); /* Change color of questions */
+        }
+
+        /* Styling for options */
+        .ans {
+            font-size: 20px;
+            color: rgb(11, 89, 224); /* Change color of options */
+            margin-left: 20px; /* Add left margin to options for spacing */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">InfoQuest- Interview Prep</div>
+    </div>
+    <h3 id="tagline">"Unlock Your Potential: Elevate Your Interview Game with InterviewPrep!"</h3>
+    <br><br>
+
+    <form action="search" method="post">
+        <label for="topicInput" style="margin-right: 5px;">Discover Your Interview Edge:</label>
+        <input type="text" id="topicInput" name="topic" placeholder="Enter Your Topic" style="  margin-right: 2px; width: 850px; height: 35px;  display: inline-block; box-sizing: border-box;" >
+        <!-- No space -->
+        <button id="searchBtn" style="height:30px ;background-color: rgb(143, 250, 227); border-radius: 5px; margin-left: 0px; display: inline-block; box-sizing: border-box;" onclick="searchTopic()">Search</button>
+        <br><br>        
+        <br>
+        <div id="answerOutput">
+
+            {% if Askmessage %}
+                {% for parts in Askmessage %}
+                    <div class="question">{{ parts[0] }}</div>
+                    <div class="ans">{{ parts[1] }}</div>
+                    <br>
+                {% endfor %}
+            {% endif %} 
+        </div> 
+        <br><br><br>
+    </form>    
+    
+</body>
+</html>
